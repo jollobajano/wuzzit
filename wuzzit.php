@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Wuzzit
-Plugin URI: http://your-plugin-url
-Description: Your WordPress Gallery Plugin description.
+Plugin URI: https://github.com/jollobajano/wuzzit
+Description: Custom galleries plugin ripped from http://shibashake.com/wordpress-theme/how-to-render-your-own-wordpress-photo-gallery
 Version: 1.0
-Author: Mats Nyberg
+Author: Mats Nyberg or rather <a href="http://shibashake.com/wordpress-theme/author/shibashake">Shiba Shake</a>
 Author URI: http://your-home-url
 */
 
