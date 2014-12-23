@@ -11,8 +11,6 @@ The galleries are rendered to fit in a Wordpress Bootstrap by Twitter theme usin
     div.container div.row div.col-md-4 a.thumbnail img
 
 
-
-
 In progres.
 
 
