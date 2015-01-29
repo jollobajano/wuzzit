@@ -76,23 +76,17 @@ function parse_gallery_shortcode($atts) {
     echo '</div><!-- /gallery -->';
 }
 
-function wz_head() {
-
-echo <<<DIV
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery Theme - Jssor Slider, Carousel, Slideshow with Javascript Source Code</title>
-</head>
-<body style="padding: 0; margin: 0; font-family:Arial, Verdana;background-color:#fff;">
-    <!-- it works the same with all jquery version from 1.x to 2.x -->
+  function wz_head() {
+    $jssor_slider = plugins_url( 'js/jssor.slider.mini.js', __FILE__ );
+    $slider_local = plugins_url( 'js/slider-local.js', __FILE__ );
+    echo <<<DIV
+    <!-- it works the same with all jquery version from 1.x to 2.x 
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    -->
     <!-- use jssor.slider.mini.js (40KB) instead for release -->
     <!-- jssor.slider.mini.js = (jssor.js + jssor.slider.js) -->
-    <script type="text/javascript" src="js/jssor.slider.mini.js"></script>
-    <script type="text/javascript" src="js/slider-local.js"></script>
+    <script type="text/javascript" src="<?php echo $jssor_slider; ?>"></script>
+    <script type="text/javascript" src="<?php echo $slider_local; ?>"></script>
     <!-- Jssor Slider Begin -->
     <!-- You can move inline styles to css file or css block. -->
     <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 800px;
