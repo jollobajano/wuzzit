@@ -61,7 +61,7 @@ function parse_gallery_shortcode($atts) {
         $image_alt = get_post_meta($image->ID,'_wp_attachment_image_alt', true);
  
         // render your gallery here
-        $image_tag = wp_get_attachment_image_src($image->ID, 'full');
+        $image_tag = wp_get_attachment_image_src($image->ID, 'medium');
         $thumbnail_tag = wp_get_attachment_image_src($image->ID, array(72, 72));
 	wz_img($image_tag[0], $thumbnail_tag[0]);
     }
@@ -111,7 +111,7 @@ DIV;
   }
 
   function wz_foot() {
-
+    $arrows_png = plugins_url( 'img/a17.png', __FILE__ );
     echo <<<DIV
       </div>
         <!-- Arrow Navigator Skin Begin -->
@@ -130,7 +130,7 @@ DIV;
 		position: absolute;
             	cursor: pointer;
             	display: block;
-                background: url(img/a17.png) no-repeat;
+                background: url($arrows_png) no-repeat;
                 overflow:hidden;
             }
             .jssora05l { background-position: -10px -40px; }
@@ -207,6 +207,7 @@ DIV;
         <a style="display: none" href="http://www.jssor.com">Image Slider</a>
     </div>
     <!-- Jssor Slider End -->
+    <div style="margin-bottom: 2cm;"></div>
   </div>
 </div>
 DIV;
