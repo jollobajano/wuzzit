@@ -50,7 +50,7 @@ function parse_gallery_shortcode($atts) {
  
     $images = get_posts($args);
     $count = 0;
-    echo '<div class="row"><!-- gallery -->';
+    wz_head();
     
     foreach ( $images as $image ) {    
         $caption = $image->post_excerpt;
@@ -61,32 +61,26 @@ function parse_gallery_shortcode($atts) {
         $image_alt = get_post_meta($image->ID,'_wp_attachment_image_alt', true);
  
         // render your gallery here
-        echo "<div class='col-xs-6 $md_col_class'>";
-        echo '<a href="#" class="thumbnail">';
-
-        echo wp_get_attachment_image($image->ID, $size);
-        
-        echo '</a>';
-        echo '</div>';
-	$count++;
-	if( !($count % 3) ) {
-	  echo '</div><div class="row">';
-	}
+        $image_tag = wp_get_attachment_image_src($image->ID, 'full');
+        $thumbnail_tag = wp_get_attachment_image_src($image->ID, array(72, 72));
+	wz_img($image_tag[0], $thumbnail_tag[0]);
     }
-    echo '</div><!-- /gallery -->';
+    wz_foot();
 }
 
   function wz_head() {
     $jssor_slider = plugins_url( 'js/jssor.slider.mini.js', __FILE__ );
     $slider_local = plugins_url( 'js/slider-local.js', __FILE__ );
     echo <<<DIV
+    <div class="row">
+      <div class="col-md-12">
     <!-- it works the same with all jquery version from 1.x to 2.x 
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     -->
     <!-- use jssor.slider.mini.js (40KB) instead for release -->
     <!-- jssor.slider.mini.js = (jssor.js + jssor.slider.js) -->
-    <script type="text/javascript" src="<?php echo $jssor_slider; ?>"></script>
-    <script type="text/javascript" src="<?php echo $slider_local; ?>"></script>
+    <script type="text/javascript" src="$jssor_slider"></script>
+    <script type="text/javascript" src="$slider_local"></script>
     <!-- Jssor Slider Begin -->
     <!-- You can move inline styles to css file or css block. -->
     <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 800px;
@@ -213,8 +207,8 @@ DIV;
         <a style="display: none" href="http://www.jssor.com">Image Slider</a>
     </div>
     <!-- Jssor Slider End -->
-</body>
-</html>
+  </div>
+</div>
 DIV;
 }
 ?>
